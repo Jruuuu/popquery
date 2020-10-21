@@ -9,10 +9,14 @@ body{
     align-items: center;
     height: 50vh;
 }
+.navbar-brand:hover{
+    background-color:rgb(107, 69, 107);
+  
+    
+}
 .container{
     width: 100px;
-    max-width: 100px;
-       
+    max-width: 100px;       
 }
 .ansLayout{
     display:grid;
