@@ -1,5 +1,3 @@
-//Eventlistner "click, start button
-
 //funcition event(start timer) and question #1 pop ups with four answers. button A, Button B, Button C, and Button D.
 
 // Correct answer moves to the next question
@@ -39,14 +37,14 @@ function startQuiz() {
     document.querySelector(".start-container").classList.add("hide");
 
     //timer starts
-    timer = setInterval(function() {
+    timer = setInterval(function () {
         time--;
         document.querySelector(".timer span").textContent = time;
         //check if time is 0 if so end quiz
         if (time <= 0) {
             endQuiz();
         };
-    },1000);
+    }, 1000);
 
     //shows question container
     document.querySelector(".question-container").classList.remove("hide");
@@ -96,7 +94,6 @@ function processAnswer(event) {
     }
     //prepare to show the next question
     questionIndex++;
-
     //check to see if we should end quiz
     if (questionIndex === questions.length) {
         endQuiz();
@@ -110,7 +107,7 @@ function processAnswer(event) {
 document.querySelector("#start-btn").addEventListener("click", startQuiz);
 
 //add event listener to each answer choice use parent as event delegator
-document.querySelector(".question-container").addEventListener("click", function(event) {
+document.querySelector(".question-container").addEventListener("click", function (event) {
     //make the function only runs when btn class is clicked
     if (event.target.className.indexOf("btn") > -1) {
         processAnswer(event);
@@ -118,22 +115,28 @@ document.querySelector(".question-container").addEventListener("click", function
 });
 
 
+
 //on submit button click
+document.querySelector(".submit").addEventListener("click", getInfo);
+//create var for localstorage
+var intScore = [];
+//pull out data from local storage
+localStorage.setItem("intScore", JSON.stringify(intScore));
 
-    //pull out data from local storage
-    //parse it
-
-    //save initials, time, score
-    //put it in an object format
-
-    //push it into pulled out data
-
-    //stringify the object
-
-    //store the object in local stoarge
-
-    //change window.location to highscore html page
-
-
-    //other page code 
-        //pull local storage data and render it onto the page
+function getInfo() {
+    //get the input box value in a var
+    var userInput = document.querySelector(".end-markup #initials");
+    //check if input is not empty
+    if (userInput !== "") {
+        //get the old data
+        intScore = JSON.parse(localStorage.getItem("intScore"));
+        //create the new data
+        var newInfo = score + "=" + userInput.value
+        //add the new data to old data
+        intScore.push(newInfo);
+        //store it
+        window.localStorage.setItem("intScore", JSON.stringify(intScore));
+        //redirect the user to other html
+        window.location.replace("highscores.html")
+    };
+};
