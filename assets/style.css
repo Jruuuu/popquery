@@ -24,7 +24,12 @@ body{
 .question-container{
     margin: auto;
     width: 60%;
-    background-color: lightseagreen;
+    text-align: center;
+    font-size: xx-large;
+  }
+  .highscore-container{
+    margin: auto;
+    width: 60%;
     text-align: center;
     font-size: xx-large;
   }
@@ -37,6 +42,8 @@ body{
     border-radius: 10px;
     margin:1px;
      }
+ 
+     
 
 .btn:hover{
     border-color: white;

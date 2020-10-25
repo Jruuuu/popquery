@@ -20,14 +20,19 @@ var questions = [
         answer: "array"
     },
     {
-        questionText: "This is q2?",
-        choice: ["cat", "dog", "mouse", "fish"],
-        answer: "dog"
+        questionText: "What is an Object?",
+        choice: ["var", "string", "index", "all of the above"],
+        answer: "all of the above"
     },
     {
-        questionText: "This is q3?",
-        choice: ["cat", "dog", "mouse", "fish"],
-        answer: "mouse"
+        questionText: "What is not a loop?",
+        choice: ["for", "if", "for/of", "do/while"],
+        answer: "if"
+    },
+    {
+        questionText: "A JavaScript function is executed when 'something' _______ it",
+        choice: ["invokes", "requires", "loops", "completes"],
+        answer: "invokes"
     }
 ]
 
@@ -118,12 +123,15 @@ document.querySelector(".question-container").addEventListener("click", function
 
 //on submit button click
 document.querySelector(".submit").addEventListener("click", getInfo);
-//create var for localstorage
-var intScore = [];
-//pull out data from local storage
-localStorage.setItem("intScore", JSON.stringify(intScore));
 
+
+//pull out data from local storage
+// localStorage.setItem("intScore", JSON.stringify(intScore));
 function getInfo() {
+    if (localStorage.getItem("intScore") === null) {
+    var intScore = [];
+   localStorage.setItem("intScore", JSON.stringify(intScore));
+   }
     //get the input box value in a var
     var userInput = document.querySelector(".end-markup #initials");
     //check if input is not empty
@@ -135,7 +143,7 @@ function getInfo() {
         //add the new data to old data
         intScore.push(newInfo);
         //store it
-        window.localStorage.setItem("intScore", JSON.stringify(intScore));
+        window.localStorage.setItem("intScore", JSON.stringify(intScore));         
         //redirect the user to other html
         window.location.replace("highscores.html")
     };
